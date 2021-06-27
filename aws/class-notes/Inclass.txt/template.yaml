@@ -1,0 +1,9 @@
+instructor:
+  name: charlie
+  department: aws 
+  job: cloud engineer 
+students:
+  -name: hamit 
+   age: 33 
+  -fatma 
+  -serkan
