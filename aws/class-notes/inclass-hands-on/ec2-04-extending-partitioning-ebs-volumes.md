@@ -55,7 +55,7 @@ sudo file -s /dev/xvdf
 ```
 - if not formatted, format the new volume
 ```
-sudo mkfs -t ext4 /dev/xvdf
+sudo mkfs -t ext4 /dev/xvdf # formatlama yapiyor
 ```
 - check the format of the volume again after formatting
 ```
@@ -75,7 +75,7 @@ lsblk
 ```
 - show the available space, on the mounting point path
 ```
-df -h
+df -h # h human readable
 ```
 - check if there is data on it or not.
 ```
