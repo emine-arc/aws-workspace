@@ -1,38 +1,43 @@
 # Import Flask modules
 from flask import Flask, render_template, request
 # Create an object named app
-app = Flask(__name__)
+app = Flask(__name__)  #object olusturulur
 # convert the given number to the roman numerals
 def convert(decimal_num):
-    # set the dictionary for roman numerals
-    roman = {1000: 'M', 900: 'CM', 500: 'D', 400: 'CD', 100: 'C', 90: 'XC',
-             50: 'L', 40: 'XL', 10: 'X', 9: 'IX', 5: 'V', 4: 'IV', 1: 'I'}
-    # initialize the result variable
+    #I'll write a function named 'convert' and I'll pass an argument decimal_number. I'll convert this number into roman numeral. For sake of this project, you should be familiar with the coding a little bit. Your python knowledge is enough to solve this problem I thing. I'll use dictionary which has numbers as keys and their roman numbers as values. (the Roman numeral equivalent of this number)
+    roman = {1000:'M', 900:'CM', 500:'D', 400:'CD', 100:'C', 90:'XC', 50:'L', 40:'XL', 10:'X', 9:'IX', 5:'V', 4:'IV', 1:'I'}
+    # I create an empty string and it will hold my roman number
     num_to_roman = ''
-    # loop the roman numerals, calculate for each symbol and add to the result
+    # I'll use for loop to create result. I'll divide the decimal number by dictionary keys from top to the end. I need to find out how many for example 1000 does decimal_num has. And then I'll multiply this number with value of key. 
     for i in roman.keys():
-        num_to_roman += roman[i] * (decimal_num // i)
+        num_to_roman += roman[i]*(decimal_num//i) # (decimal_num//i) gives us quotient of division
+        # I need to get remainder of division of decimal_num by i
         decimal_num %= i
-    return num_to_roman 
-@app.route('/', methods = ["GET"])
-def main_get():
-    return render_template('index.html', developer_name="Emine", not_valid=False)
-
-@app.route('/', methods = ["POST"])
+    return num_to_roman
+    # Try a couple of examples. Of course, you all might have different functions
+@app.route('/', methods = ["POST", "GET"])
 def main_post():
-    alpha = request.form["number"]
-    if not alpha.isdecimal():
-        return render_template("index.html", developer_name="Emine", not_valid=True)
-    number=int(alpha)
+    if request.method == "POST":
+        alpha = request.form["number"]
+        if not alpha.isdecimal():
+            return render_template('index.html', developer_name='Emine', not_valid=True)
+        number=int(alpha)
+        if not 0 < number < 4000:
+            return render_template('index.html', developer_name='Emine', not_valid=True)
+        return render_template('result.html', number_decimal=number, number_roman=convert(number), developer_name='Emine')
+    else:
+        return render_template('index.html',developer_name='Emine', not_valid=False)
 
-    if not 0 < number < 4000:
-        return render_template("index.html", developer_name="Emine", not_valid=True)
 
-    return render_template("result.html", number_decimal="number", number_roman=convert(number), developer_name="Emine")
 
-if __name__=="__main__":
-    app.run(debug=True)
-    #app.run(host='0.0.0.0', port=80)    
+
+
+
+
+
+if __name__=="__main__":  #kontrol cumlemiz
+    #app.run(debug=True)
+    app.run(host='0.0.0.0', port=80)    
 
 
 
