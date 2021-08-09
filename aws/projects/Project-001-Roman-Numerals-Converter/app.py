@@ -28,16 +28,9 @@ def main_post():
     else:
         return render_template('index.html',developer_name='Emine', not_valid=False)
 
-
-
-
-
-
-
-
 if __name__=="__main__":  #kontrol cumlemiz
-    #app.run(debug=True)
-    app.run(host='0.0.0.0', port=80)    
+    app.run(debug=True)
+    #app.run(host='0.0.0.0', port=80)    
 
 
 
