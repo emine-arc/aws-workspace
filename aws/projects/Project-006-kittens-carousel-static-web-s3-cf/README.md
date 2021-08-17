@@ -140,3 +140,12 @@ Kittens Carousel is a static website application deployed on AWS Simple Storage 
 - [AWS Cloudformation User Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
 
 - [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/index.html)
+
+
+#!/bin/bash
+cd static-web/
+aws s3 cp index.html s3://Bucket-name/index.html
+aws s3 cp cat0.jpg s3://Bucket-name/
+aws s3 cp cat1.jpg s3://Bucket-name/
+aws s3 cp cat2.jpg s3://Bucket-name/
+aws s3 ls s3://Bucket-name/

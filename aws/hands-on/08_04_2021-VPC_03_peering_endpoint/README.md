@@ -274,7 +274,7 @@ aws s3 ls clarusway-vpc-endpoint
 
 - copy the 'Guile.png' and 'Honda.png' files from S3 bucket into the private EC2
 ```bash
-aws s3 cp s3://clarusway-vpc-endpoint/Guile.png .
+aws s3 cp s3://clarusway-vpc-endpoint.emine/Guile.png .
 aws s3 cp s3://clarusway-vpc-endpoint/Honda.png .
 ```
 
